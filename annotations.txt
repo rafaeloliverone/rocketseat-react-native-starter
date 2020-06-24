@@ -1,0 +1,10 @@
+
+ 1982  yarn add @react-navigation/native
+ 1983  yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+ 1984  yarn add @react-navigation/stack
+ 1985  ls
+ 1986  npm install
+ 1987  npm install --save react-navigation
+ 1988  npm install --save react-native-gesture-handler
+ 1989  react-native link
+ 1990  react-native start
