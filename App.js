@@ -1,31 +1,14 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import './src/config/StatusBarConfig';
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
       <Text>Home Screen</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() =>
-          navigation.navigate('Profile', { name: 'Custom profile header' })
-        }
-      />
-    </View>
-  );
-}
-
-function ProfileScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile screen</Text>
-      <Button
-        title="Update the title"
-        onPress={() => navigation.setOptions({ title: 'Updated!' })}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
@@ -39,12 +22,13 @@ function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'My home' }}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={({ route }) => ({ title: route.params.name })}
+          options={{
+            title: 'JSHunt',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
