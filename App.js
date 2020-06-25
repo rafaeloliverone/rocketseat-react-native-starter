@@ -2,13 +2,32 @@ import * as React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import './src/config/StatusBarConfig';
+import api from './src/services/api';
 
 function HomeScreen() {
+  const [docs, setDocs] = React.useState([]);
+
+  React.useEffect(() => {
+    loadProducts();
+  }, []);
+    
+  const loadProducts =  async () => {
+    const response = await api.get('/products');
+
+    const { docs } = response.data;
+
+    setDocs(docs);
+  }
+  
+  console.log(docs);
+  
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
-      <Text>Home Screen</Text>
+
+      {docs.map( product => (
+        <Text key={product._id}>{product.title}</Text>
+      ))}
     </View>
   );
 }
