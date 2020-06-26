@@ -16,7 +16,7 @@ function App() {
           options={{
             title: 'JSHunt',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#6a51ae',
             },
             headerTintColor: '#fff',
           }}
