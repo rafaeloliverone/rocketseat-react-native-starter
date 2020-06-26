@@ -7,4 +7,4 @@
  1987  npm install --save react-navigation
  1988  npm install --save react-native-gesture-handler
  1989  react-native link
- 1990  react-native start
+ 1990  expo start

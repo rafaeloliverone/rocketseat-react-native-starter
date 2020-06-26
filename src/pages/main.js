@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { View, Text, StatusBar, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import api from '../services/api';
+import Product from './product';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   const [allDocs, setAllDocs] = React.useState([]);
   const [productInfo, setProductInfo] = React.useState([]);
   const [page, setPages] = React.useState(1);
@@ -11,13 +14,13 @@ function HomeScreen() {
     loadProducts();
   }, []);
 
-  
+
   const loadProducts = async (page = 1) => {
     const response = await api.get(`/products?page=${page}`);
 
     const { docs, ...productInfo } = response.data;
     const resultDocs = [...allDocs, ...docs];
-    console.log('inside LoadProduct');
+    
     setAllDocs(resultDocs);
     setProductInfo(productInfo);
     setPages(page);
@@ -32,7 +35,9 @@ function HomeScreen() {
       <Text style={styles.productTitle}>{item.title}</Text>
       <Text style={styles.productDescription}>{item.description}</Text>
 
-      <TouchableOpacity style={styles.productButton} onPress={() => { }}>
+      <TouchableOpacity 
+        style={styles.productButton} 
+        onPress={() => navigation.navigate('Product')}>
         <Text style={styles.productButtonText}>Acessar</Text>
       </TouchableOpacity>
 
