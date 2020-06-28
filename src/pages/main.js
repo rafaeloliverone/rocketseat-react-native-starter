@@ -37,7 +37,11 @@ function HomeScreen({navigation}) {
 
       <TouchableOpacity 
         style={styles.productButton} 
-        onPress={() => navigation.navigate('Product')}>
+        onPress={() => navigation.navigate('Product', {
+          url: item.url,
+          title: item.title
+        })}
+      >
         <Text style={styles.productButtonText}>Acessar</Text>
       </TouchableOpacity>
 

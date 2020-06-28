@@ -25,13 +25,16 @@ function App() {
         <Stack.Screen
           name="Product"
           component={Product}
-          options={{
-            title: 'Product',
-            headerStyle: {
-              backgroundColor: '#6a51ae',
-            },
-            headerTintColor: '#fff',
-          }}
+          options={({ route }) => ({
+              title: route.params.title,
+              headerStyle: {
+                backgroundColor: '#6a51ae',
+              },
+              headerTintColor: '#fff',
+            
+          })
+            
+          }
         />
       </Stack.Navigator>
     </NavigationContainer>
